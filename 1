@@ -1,0 +1,29 @@
+'Colour the difference column comparing with the column above by using the boolean data type
+
+Sub colour()
+
+Dim i As Integer, found As Boolean
+
+found = False
+
+i = 4
+
+Do While Trim(Cells(i, 2)) <> ""
+
+    If Trim(Cells(i, 2)) <> Trim(Cells(i - 1, 2)) Then
+    found = True
+    
+    Else
+    found = False
+    
+    End If
+    
+    If found = True Then
+    Range(Cells(i, 2), Cells(i, 4)).Interior.Color = 15177845
+    End If
+        
+    i = i + 1
+    
+Loop
+
+End Sub
