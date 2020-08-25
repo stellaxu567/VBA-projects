@@ -1,0 +1,41 @@
+'Develop a new VBA formula to be used in Excel
+
+Option Explicit
+
+Sub analysis()
+
+Dim i, score
+
+  For i = 3 To 8 
+
+  score = Cells(i, 3)
+
+  Cells(i, 4) = classify(score)
+
+  Next i
+
+End Sub
+------------
+
+Function classify(s)
+
+Dim score, level
+
+score = s
+
+  If score < 30 Then
+  level = "jia"
+    
+  ElseIf score < 60 Then
+  level = "yi"
+    
+  ElseIf score < 90 Then
+  level = "bing"
+    
+  ElseIf score < 100 Then
+  level = "ding"
+  End If
+
+classify = level
+
+End Function
