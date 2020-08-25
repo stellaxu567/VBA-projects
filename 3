@@ -1,0 +1,38 @@
+'Summarize data from multiple workbooks by using VBA
+
+Option Explicit
+
+Sub jibao()
+
+Dim i, k, fileName, wkPath
+Dim w As Worksheet, r As Worksheet, wb As Workbook
+
+Set r = ActiveWorkbook.Worksheets("jibao")
+
+wkPath = ActiveWorkbook.path
+    
+For i = 4 To 6
+    fileName = i & "yue.xlsx"
+          
+    Set wb = Workbooks.Open(wkPath & "\" & fileName)
+    
+    Set w = wb.Worksheets(1)
+                   
+    For k = 3 To 10
+    
+        r.Cells(k, 3) = r.Cells(k, 3) + w.Cells(k, 3)
+        r.Cells(k, 4) = r.Cells(k, 4) + w.Cells(k, 4)
+        r.Cells(k, 5) = r.Cells(k, 5) + w.Cells(k, 5)
+        r.Cells(k, 6) = r.Cells(k, 6) + w.Cells(k, 6)
+    Next k
+ 
+    wb.Close
+Next ic
+
+Set wb = Workbooks.Add
+
+r.Copy before:=wb.Worksheets(1)
+
+wb.SaveAs wkPath & "jibao.xlsx"
+wb.Close
+End Sub
